@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <getresponse_config translate="label" module="mwojcik_getresponse">
+            <label>GetResponse</label>
+            <sort_order>9999</sort_order>
+        </getresponse_config>
+    </tabs>
+    <sections>
+        <getresponse_options translate="label" module="mwojcik_getresponse">
+            <label>Configurations</label>
+            <tab>getresponse_config</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <configurations translate="label">
+                    <label>GetResponse integration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active>
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <apikey>
+                            <label>API Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can find your API key in integration settings of your GetResponse account. Log in to GetResponse and go to My account > API & OAuth to find the key.]]></comment>
+                        </apikey>
+                        <is_enterprise>
+                            <label>Enterprise Account</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </is_enterprise>
+                        <enterprise_environment>
+                            <label>Environment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mwojcik_getresponse/system_config_source_environment</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <is_enterprise>1</is_enterprise>
+                            </depends>
+                        </enterprise_environment>
+                        <enterprise_domain>
+                            <label>Domain</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <is_enterprise>1</is_enterprise>
+                            </depends>
+                        </enterprise_domain>
+                        <check>
+                            <label></label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>mwojcik_getresponse/adminhtml_system_config_checkConnection</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </check>
+                    </fields>
+                </configurations>
+            </groups>
+        </getresponse_options>
+    </sections>
+
+</config>

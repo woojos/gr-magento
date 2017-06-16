@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mwojcik_Getresponse>
+            <version>1.0.0</version>
+        </Mwojcik_Getresponse>
+    </modules>
+    <global>
+        <blocks>
+            <mwojcik_getresponse>
+                <class>Mwojcik_Getresponse_Block</class>
+            </mwojcik_getresponse>
+        </blocks>
+        <helpers>
+            <mwojcik_getresponse>
+                <class>Mwojcik_Getresponse_Helper</class>
+            </mwojcik_getresponse>
+        </helpers>
+        <models>
+            <mwojcik_getresponse>
+                <class>Mwojcik_Getresponse_Model</class>
+            </mwojcik_getresponse>
+        </models>
+        <resources>
+            <mwojcik_getresponse_setup>
+                <setup>
+                    <module>Mwojcik_Getresponse</module>
+                </setup>
+            </mwojcik_getresponse_setup>
+        </resources>
+    </global>
+
+<!--
+    <frontend>
+        <routers>
+            <mwojcik_getresponse>
+                <use>standard</use>
+                <args>
+                    <frontName>getresponse</frontName>
+                    <module>Mwojcik_Getresponse</module>
+                </args>
+            </mwojcik_getresponse>
+        </routers>
+    </frontend>
+-->
+    <admin>
+        <routers>
+            <mwgetresponse>
+                <use>admin</use>
+                <args>
+                    <module>Mwojcik_Getresponse</module>
+                    <frontName>mw-getresponse</frontName>
+                </args>
+            </mwgetresponse>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <getresponse_options>
+                                            <title>GetResponse configuration</title>
+                                        </getresponse_options>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+</config>

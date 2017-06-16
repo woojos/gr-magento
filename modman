@@ -1,0 +1,3 @@
+src/app/code/local/Mwojcik/Getresponse     app/code/local/Mwojcik/Getresponse
+src/app/etc/modules/*    app/etc/modules/
+src/app/design/adminhtml/default/default/template/mwojcik/getresponse   app/design/adminhtml/default/default/template/mwojcik/getresponse

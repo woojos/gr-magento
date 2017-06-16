@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    //<![CDATA[
+    function check() {
+        new Ajax.Request('<?php echo $this->getAjaxCheckUrl() ?>', {
+            method: 'post',
+            parameters: 'api_key=' + $('getresponse_options_configurations_apikey').value + '&is_enterprise=' + $('getresponse_options_configurations_is_enterprise').value + '&env=' + $('getresponse_options_configurations_enterprise_environment').value + '&domain=' + $('getresponse_options_configurations_enterprise_domain').value,
+            onSuccess: function(transport){
+
+                if (transport.responseText){
+                    alert(transport.responseText);
+                }
+            }
+        });
+    }
+    //]]>
+</script>
+
+<?php echo $this->getButtonHtml() ?>

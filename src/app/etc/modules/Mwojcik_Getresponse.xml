@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mwojcik_Getresponse>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends></depends>
+        </Mwojcik_Getresponse>
+    </modules>
+</config>
