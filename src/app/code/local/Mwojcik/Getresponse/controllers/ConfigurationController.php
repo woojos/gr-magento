@@ -6,27 +6,31 @@
 class Mwojcik_Getresponse_ConfigurationController extends Mage_Adminhtml_Controller_Action
 {
 
+    const RESPONSE_STATUS_FAILED = 'failed';
+    const RESPONSE_STATUS_OK = 'ok';
+
     public function checkAction()
     {
         try {
             $this->validate();
+
+            $apiKey = Mage::app()->getRequest()->getParam('api_key');
+            $isEnterprise = Mage::app()->getRequest()->getParam('is_enterprise');
+            $env = Mage::app()->getRequest()->getParam('env');
+            $domain = Mage::app()->getRequest()->getParam('domain');
+
+            if (0 == $isEnterprise) {
+                $env = MWojcik_Getresponse_Model_Consts::ENV_SMB;
+            }
+
+            Mage::getModel('mwojcik_getresponse/api_configuration')->checkConnection($apiKey, $env, $domain);
+            $this->sendResponse('Connected!', self::RESPONSE_STATUS_OK);
+
         } catch (Mwojcik_Getresponse_Model_Exception_ValidationException $e) {
-            return $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($e->getMessage()));
+            $this->sendResponse($e->getMessage(), self::RESPONSE_STATUS_FAILED);
+        } catch (Mwojcik_Getresponse_Model_Exception_ApiException $e) {
+            $this->sendResponse($e->getMessage(), self::RESPONSE_STATUS_FAILED);
         }
-
-        $apiKey = Mage::app()->getRequest()->getParam('api_key');
-        $isEnterprise = Mage::app()->getRequest()->getParam('is_enterprise');
-        $env = Mage::app()->getRequest()->getParam('env');
-        $domain = Mage::app()->getRequest()->getParam('domain');
-
-
-        if (0 == $isEnterprise) {
-            $env = MWojcik_Getresponse_Model_Consts::ENV_SMB;
-        }
-
-        $response = Mage::getModel('mwojcik_getresponse/api_configuration')->checkConnection($apiKey, $env, $domain);
-
-        //print_r($response);
 
     }
 
@@ -48,6 +52,20 @@ class Mwojcik_Getresponse_ConfigurationController extends Mage_Adminhtml_Control
                 'Domain cannot be empty for enterprise.'
             );
         }
+    }
 
+    /**
+     * @param string $message
+     * @param string $responseStatus
+     * @return Zend_Controller_Response_Abstract
+     */
+    private function sendResponse($message, $responseStatus)
+    {
+        return $this->getResponse()
+            ->setBody(Mage::helper('core')->jsonEncode(
+                array(
+                    'status' => $responseStatus,
+                    'message' => $message
+                )));
     }
 }

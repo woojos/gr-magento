@@ -14,4 +14,15 @@ class MWojcik_Getresponse_Model_Consts
     const URL_MXPL = 'https://api3.getresponse360.pl/v3/';
     const URL_MXUS = 'https://api3.getresponse360.com/v3/';
 
+    const CONF_PREFIX = 'getresponse_options/';
+
+    const CONF_API_KEY = 'configurations/apikey';
+    const CONF_API_ENV = 'configurations/environment';
+    const CONF_API_DOMAIN = 'configurations/enterprise_domain';
+    const CONF_IS_ACTIVE = 'configurations/active';
+
+    const CONF_CAMPAIGN_ID = 'user_subscription/campaign';
+
+    const CONF_ECOMMERCE_IS_ACTIVE = 'ecommerce/active';
+
 }

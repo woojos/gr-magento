@@ -30,19 +30,20 @@
         </resources>
     </global>
 
-<!--
+
     <frontend>
-        <routers>
-            <mwojcik_getresponse>
-                <use>standard</use>
-                <args>
-                    <frontName>getresponse</frontName>
-                    <module>Mwojcik_Getresponse</module>
-                </args>
-            </mwojcik_getresponse>
-        </routers>
+        <events>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <getresponse_add_to_cart_shop_webhook>
+                        <class>Mwojcik_Getresponse_Model_Observer</class>
+                        <method>addProductToCartHandler</method>
+                    </getresponse_add_to_cart_shop_webhook>
+                </observers>
+            </checkout_cart_product_add_after>
+        </events>
     </frontend>
--->
+
     <admin>
         <routers>
             <mwgetresponse>

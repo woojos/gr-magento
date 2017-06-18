@@ -23,4 +23,12 @@ class Mwojcik_Getresponse_Helper_Data extends Mage_Core_Helper_Abstract
         }
     }
 
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function getConfigValue($key)
+    {
+        return Mage::getStoreConfig(MWojcik_Getresponse_Model_Consts::CONF_PREFIX . $key);
+    }
 }

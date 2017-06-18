@@ -6,16 +6,39 @@
 class Mwojcik_Getresponse_Model_Api_Configuration
 {
 
+    const GET = 'GET';
+    const POST = 'POST';
+
+    /** @var Mwojcik_Getresponse_Model_Api_Core */
+    private $coreApi;
+    /** @var Mwojcik_Getresponse_Helper_Data */
+    private $dataHelper;
+
+    public function __construct()
+    {
+        $this->coreApi = Mage::getModel('mwojcik_getresponse/api_core');
+        $this->dataHelper = Mage::getModel('mwojcik_getresponse/api_core');
+    }
+
     public function checkConnection($apiKey, $env, $domain = '')
     {
-        return Mage::getModel('mwojcik_getresponse/api_core')->call(
+        return $this->coreApi->callWithCredentials(
             $apiKey,
-            Mage::helper('mwojcik_getresponse')->getApiUrlForEnvironment($env),
+            $this->dataHelper->getApiUrlForEnvironment($env),
             $domain,
             'accounts',
-            'GET'
+            self::GET
         );
+    }
 
+    public function getCampaignList()
+    {
+        return $this->coreApi->call('campaigns', self::GET);
+    }
+
+    public function getShopList()
+    {
+        return $this->coreApi->call('shops', self::GET);
     }
 
 }
