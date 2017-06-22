@@ -10,10 +10,10 @@ class Mwojcik_Getresponse_Model_Observer
     /** @var Mwojcik_Getresponse_Helper_Data */
     private $dataHelper;
 
-    public function __construct()
+    public function __construct(array $params = [])
     {
-        $this->contactApi = Mage::getModel('mwojcik_getresponse/api_contact');
-        $this->dataHelper = Mage::helper('mwojcik_getresponse');
+        $this->contactApi = isset($params['contactApi']) ? $params['contactApi'] : Mage::getModel('mwojcik_getresponse/api_contact');
+        $this->dataHelper = isset($params['dataHelper']) ? $params['dataHelper'] : Mage::helper('mwojcik_getresponse');
     }
 
     /**
@@ -56,6 +56,25 @@ class Mwojcik_Getresponse_Model_Observer
         if (!isset($response->contactId)) {
             return false;
         }
+    }
+
+    /**
+     * @param Varien_Event_Observer $observer
+     */
+    public function customerRegisterSuccessHandler(Varien_Event_Observer $observer)
+    {
+        /** @var Mage_Customer_Model_Customer $customer */
+        $customer = $observer->getEvent()->getCustomer();
+
+        $payload = [
+            'name' => $customer->getName(),
+            'email' => $customer->getEmail(),
+            'campaign' => [
+                'campaignId' => $this->dataHelper->getConfigValue(MWojcik_Getresponse_Model_Consts::CONF_CAMPAIGN_ID),
+            ]
+        ];
+
+        $this->contactApi->createContact($payload);
     }
 
 }

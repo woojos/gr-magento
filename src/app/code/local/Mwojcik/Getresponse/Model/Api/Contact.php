@@ -47,4 +47,16 @@ class Mwojcik_Getresponse_Model_Api_Contact
         return $contact;
     }
 
+    /**
+     * @param array $params
+     */
+    public function createContact(array $params)
+    {
+        $this->coreApi->call(
+            'contacts',
+            self::POST,
+            $params
+        );
+    }
+
 }

@@ -9,6 +9,11 @@ class Mwojcik_Getresponse_ConfigurationController extends Mage_Adminhtml_Control
     const RESPONSE_STATUS_FAILED = 'failed';
     const RESPONSE_STATUS_OK = 'ok';
 
+    protected function _isAllowed()
+    {
+        return parent::_isAllowed();
+    }
+
     public function checkAction()
     {
         try {

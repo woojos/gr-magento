@@ -41,6 +41,16 @@
                     </getresponse_add_to_cart_shop_webhook>
                 </observers>
             </checkout_cart_product_add_after>
+
+            <customer_register_success>
+                <observers>
+                    <getresposne_customer_register_success>
+                        <class>Mwojcik_Getresponse_Model_Observer</class>
+                        <method>customerRegisterSuccessHandler</method>
+                    </getresposne_customer_register_success>
+                </observers>
+            </customer_register_success>
+
         </events>
     </frontend>
 
