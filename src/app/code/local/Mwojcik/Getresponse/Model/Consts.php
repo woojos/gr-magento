@@ -25,4 +25,6 @@ class MWojcik_Getresponse_Model_Consts
 
     const CONF_ECOMMERCE_IS_ACTIVE = 'ecommerce/active';
 
+    const CONF_FIELDS_MAPPING = 'fields_mapping/map_fields';
+
 }

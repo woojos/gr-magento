@@ -10,6 +10,9 @@ class Mwojcik_Getresponse_Model_Observer
     /** @var Mwojcik_Getresponse_Helper_Data */
     private $dataHelper;
 
+    /**
+     * @param array $params
+     */
     public function __construct(array $params = [])
     {
         $this->contactApi = isset($params['contactApi']) ? $params['contactApi'] : Mage::getModel('mwojcik_getresponse/api_contact');
@@ -24,16 +27,13 @@ class Mwojcik_Getresponse_Model_Observer
         if (false === $this->canHandleCartEvent()) {
             return;
         }
-
-        // pobierz koszyk z gra
-
-        // get product from cart
-
     }
 
 
     private function canHandleCartEvent()
     {
+        return false;
+
         /* Is customer logged in ? */
         if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
             return false;
@@ -63,16 +63,9 @@ class Mwojcik_Getresponse_Model_Observer
      */
     public function customerRegisterSuccessHandler(Varien_Event_Observer $observer)
     {
-        /** @var Mage_Customer_Model_Customer $customer */
-        $customer = $observer->getEvent()->getCustomer();
+        $payload = Mage::getModel('mwojcik_getresponse/customer_payload')
+            ->createFromCustomer($observer->getEvent()->getCustomer());
 
-        $payload = [
-            'name' => $customer->getName(),
-            'email' => $customer->getEmail(),
-            'campaign' => [
-                'campaignId' => $this->dataHelper->getConfigValue(MWojcik_Getresponse_Model_Consts::CONF_CAMPAIGN_ID),
-            ]
-        ];
 
         $this->contactApi->createContact($payload);
     }

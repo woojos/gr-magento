@@ -116,10 +116,33 @@
                         </campaign>
                     </fields>
                 </user_subscription>
+                <fields_mapping>
+                    <label>Custom Fields Mapping</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <map_fields>
+                            <label>Customer Fields Mapping</label>
+                            <frontend_model>mwojcik_getresponse/adminhtml_system_config_fieldsMapping</frontend_model>
+                            <backend_model>mwojcik_getresponse/system_config_backend_fieldsMapping</backend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <active>1</active>
+                            </depends>
+                        </map_fields>
+                    </fields>
+                </fields_mapping>
+
                 <ecommerce translate="label">
                     <label>E-commerce</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>3</sort_order>
+                    <sort_order>4</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>

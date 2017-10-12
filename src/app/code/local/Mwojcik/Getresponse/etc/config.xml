@@ -88,4 +88,13 @@
         </acl>
     </adminhtml>
 
+    <default>
+        <getresponse_options>
+            <fields_mapping>
+                <map_fields><![CDATA[a:8:{s:18:"_1499117163403_403";a:2:{s:7:"magento";s:10:"First Name";s:5:"gr_id";s:0:"";}s:18:"_1499117163403_404";a:2:{s:7:"magento";s:9:"Last Name";s:5:"gr_id";s:0:"";}s:18:"_1499117163403_405";a:2:{s:7:"magento";s:11:"Middle Name";s:5:"gr_id";s:0:"";}s:18:"_1499117163403_406";a:2:{s:7:"magento";s:13:"Date Of Birth";s:5:"gr_id";s:0:"";}s:18:"_1499117163403_407";a:2:{s:7:"magento";s:14:"Billing Street";s:5:"gr_id";s:0:"";}s:18:"_1499117163403_408";a:2:{s:7:"magento";s:12:"Billing City";s:5:"gr_id";s:0:"";}s:18:"_1499117163403_409";a:2:{s:7:"magento";s:17:"Billing Post Code";s:5:"gr_id";s:0:"";}s:18:"_1499117163403_410";a:2:{s:7:"magento";s:15:"Billing Country";s:5:"gr_id";s:0:"";}}]]></map_fields>
+            </fields_mapping>
+        </getresponse_options>
+    </default>
+
+
 </config>

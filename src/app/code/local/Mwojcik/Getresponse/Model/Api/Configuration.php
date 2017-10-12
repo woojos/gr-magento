@@ -41,4 +41,9 @@ class Mwojcik_Getresponse_Model_Api_Configuration
         return $this->coreApi->call('shops', self::GET);
     }
 
+    public function getCustomFields()
+    {
+        return $this->coreApi->call('custom-fields', self::GET);
+    }
+
 }
